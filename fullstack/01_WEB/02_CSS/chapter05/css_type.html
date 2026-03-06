@@ -1,0 +1,54 @@
+<!-- 
+1. outer css: 외부 CSS 파일
+2. inner css : 내부 CSS 블록
+3. inline css :  태그의 style 속성
+-->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        background-color: blue;
+      }
+
+      nav > ul > li {
+        display: inline;
+      }
+
+      nav > ul > li > a {
+        text-decoration: none;
+      }
+
+      nav > ul > li > a:hover {
+        background-color: yellow;
+        color: blue;
+        font-weight: bold;
+      }
+    </style>
+    <!-- 우선순위가 더 높음 -->
+    <!-- <link rel="stylesheet" href="text/css" href="./basic.css" /> -->
+  </head>
+  <body>
+    <div>DIV</div>
+
+    <form>
+      <input type="checkbox" />ONE <input type="checkbox" />TWO
+      <input type="checkbox" />THREE
+    </form>
+
+    <nav>
+      <ul>
+        <li><a href="#">로그인</a></li>
+        <li><a href="#">상품</a></li>
+        <li><a href="#">주문목록</a></li>
+      </ul>
+    </nav>
+  </body>
+</html>
+
+<!-- 속성 값 뒤에다 !important를 주면 우선순위가 가장 높아짐 -->
+<!-- 제일 아래있는 값이 우선순위가 높음 -->
