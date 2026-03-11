@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    window.addEventListener("load", function () {
+      const link = document.getElementById("button");
+
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+      });
+    });
+  </script>
+  <body>
+    <a id="button" href="https://www.naver.com">버튼</a>
+  </body>
+</html>
+
+<!-- 
+button.onclick = function () {
+// 기본 이벤트를 제거합니다.
+return false;
+}; -->
