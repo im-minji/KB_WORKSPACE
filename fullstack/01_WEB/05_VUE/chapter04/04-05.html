@@ -9,9 +9,9 @@
     <div id="app">
       1보다 큰 수: <input type="text" v-model.number="num" />
       <br />
-      1부터 입력한 값까지의 합: <span>{{sum}}</span><br />
-      1부터 입력한 값까지의 합: <span>{{sum}}</span><br />
-      1부터 입력한 값까지의 합: <span>{{sum}}</span><br />
+      1부터 입력한 값까지의 합: <span>{{sum()}}</span><br />
+      1부터 입력한 값까지의 합: <span>{{sum()}}</span><br />
+      1부터 입력한 값까지의 합: <span>{{sum()}}</span><br />
     </div>
 
     <script src="https://unpkg.com/vue"></script>
@@ -21,7 +21,7 @@
         data() {
           return { num: 0 };
         },
-        computed: {
+        methods: {
           sum() {
             console.log("## num : " + this.num);
             let n = parseInt(this.num);
