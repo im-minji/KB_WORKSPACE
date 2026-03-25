@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      let person = {
+        name: "오문정",
+        address: "송파구",
+        point: 4,
+        print: function () {
+          // ES6
+          console.log(this); //호출된 객체를 가리킨다(동적)
+          // console.log(this.name + ':' + this.address + ':' + this.point);
+          console.log(`${this.name}:${this.address}:${this.point}`);
+        },
+        work: () => {
+          console.log(this); //선언된 위치의 상위스코프에 있는 this를 그대로 물려받는다(정적Lexical this) 여기서 상위스코프란 window객체
+          console.log(this.name + "이 열심히 일합니다");
+        },
+      };
+      console.log(person.name);
+      person.print();
+      person.work();
+    </script>
+  </head>
+  <body></body>
+</html>
