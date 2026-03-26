@@ -10,7 +10,7 @@ export default {
 };
 </script>
 
-<style>
+<style module>
 /* child2는 blue, child3은 orange */
 .child {
   background-color: orange;
