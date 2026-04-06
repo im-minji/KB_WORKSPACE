@@ -1,0 +1,98 @@
+** index.html을 App.vue로 변환해봐요~
+
+0. C:\KB_Workspace\02_Vue\02_Vue\kbstarbucks실습\OptionAPI\index.html문서는 제공합니다.
+이미 bootstrap, fontawsome이 적용되었고 햄버거 메뉴버튼도 구성되어있습니다.
+index.html의 <main class="container">라고 하면 bootstrap class와 사용자정의 class가 중복되어 헷갈려요. ==> <main class="main-container">로 변경해요  
+
+1. index.html를 App.vue에 붙여넣기
+  1) <body> -> <template>으로 붙여넣고, section영역에 자식컴포넌트인 <Product></Product>끼워넣기
+    <section class="main-container__content overflow-auto">
+      <!-- 내용이 많아지면 이곳에 스크롤이 생깁니다 -->
+      <Product></Product>
+    </section>
+ 2)<script>
+import Product from '@/components/Product.vue';
+export default {
+  name: 'App',
+  components: { Product },
+};
+</script>
+3) <style> -> <style>로 붙여넣기
+
+
+2. 부트스트랩용 CSS와 JS사용하기
+
+1) 부트스트랩 모듈 설치 : npm install bootstrap으로 부트스트랩모듈을 설치
+
+ 2) 전역으로 사용될 스타일과 JS는 main.js에 설정합니다
+main.js에 
+// 전역 CSS 설정 (ex : 부트스트랩 스타일)
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+//전역 JS 설정 ( ex: 햄버거메뉴 버튼 클릭했을 때 메뉴들이 수직으로 보이는 기능)
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+----------------------------------
+ 3) FontAwsome 전역으로 사용하기
+  3-1) main.js에 
+  import './assets/main.css';  를 활성화 합니다
+
+  3-2) main.css에서 아래 css를 추가합니다
+  /* @import './base.css'; */
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css';
+@import 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css';
+
+
+ 4) 전역스타일인 main.css에서 중앙 배치 없애기
+/*이건 <div id="app">영역을 중앙에 배치 */
+/*
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-weight: normal;
+}
+*/
+/* 반응형 화면도 중앙에 배치 flex center
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    place-items: center;
+  }
+
+  #app {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 2rem;
+  }
+}
+  */
+
+
+ 5) App.vue에서 
+  5-1) 주의!  <style scoped>에서는 body에 스타일이 적용되지 않습니다. ==>  
+App.vue의 style은 scoped 제거하여 전역으로 사용합니다
+<style>
+  5-2) body선택자 대신 #app으로 바꿉니다
+/* body {  */
+#app {
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* 세로배치 */
+  height: 100vh; /* 화면 전체 높이 사용 */
+}
+
+3. 이미지 처리하기
+1) src\assets\images폴더 만들기
+2) logo-75.png파일 붙여넣기 : src\assets\images\logo-75.png
+3) <script>에 이미지파일 추가
+ import logo from '@/assets/images/logo-75.png'; 
+4) <script>의 Model 데이터로 설정
+data() {
+    return {
+      logo: logo,
+    };
+  },
+5) <template>의 img태그
+ <!-- <img src="./images/logo-75.png" alt="로고" height="75" /> -->
+<img :src="logo" alt="로고" height="75" />
+
